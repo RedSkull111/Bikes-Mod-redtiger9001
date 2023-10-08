@@ -1,11 +1,7 @@
-package net.redtiger.lots_of_bikes_mod.entity.client;
-
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
-import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.entity.Entity;
 import net.redtiger.lots_of_bikes_mod.entity.custom.BikeEntity;
 
 // Made with Blockbench 4.8.3
@@ -19,7 +15,7 @@ public class BikeModel<T extends BikeEntity> extends SinglePartEntityModel<T> {
 	public static TexturedModelData getTexturedModelData() {
 		ModelData modelData = new ModelData();
 		ModelPartData modelPartData = modelData.getRoot();
-		ModelPartData Bike = modelPartData.addChild("Bike", ModelPartBuilder.create(), ModelTransform.pivot(12.4216F, 19.7123F, 5.625F));
+		ModelPartData Bike = modelPartData.addChild("Bike", ModelPartBuilder.create(), ModelTransform.pivot(7.4216F, 16.7123F, 5.625F));
 
 		ModelPartData Frame = Bike.addChild("Frame", ModelPartBuilder.create().uv(0, 4).cuboid(-7.25F, -9.0F, -1.0F, 12.5F, 2.0F, 2.0F, new Dilation(0.0F))
 		.uv(19, 25).cuboid(13.5F, -8.0F, -1.5F, 1.0F, 9.75F, 1.0F, new Dilation(0.0F))
