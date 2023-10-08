@@ -1,5 +1,6 @@
 package net.redtiger.lots_of_bikes_mod.entity.custom;
 
+import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -13,8 +14,29 @@ import net.redtiger.lots_of_bikes_mod.entity.ModEntities;
 import org.jetbrains.annotations.Nullable;
 
 public class BikeEntity extends AnimalEntity {
+
+
+
     public BikeEntity(EntityType<? extends AnimalEntity> entityType, World world) {
         super(entityType, world);
+    }
+
+    private void setupAnimationStates() {
+
+    }
+
+    @Override
+    protected void updateLimbs(float posDelta) {
+        float f = this.getPose() == EntityPose.STANDING ? Math.min(posDelta * 6f,1f) : 0.0f;
+        this.limbAnimator.updateLimbs(f, 0.2f);
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+        if(this.getWorld().isClient()){
+            setupAnimationStates();
+        }
     }
 
     @Override

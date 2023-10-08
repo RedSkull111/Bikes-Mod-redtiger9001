@@ -4,6 +4,8 @@ import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.util.math.MathHelper;
+import net.redtiger.lots_of_bikes_mod.entity.animation.ModAnimations;
 import net.redtiger.lots_of_bikes_mod.entity.custom.BikeEntity;
 
 // Made with Blockbench 4.8.3
@@ -69,7 +71,20 @@ public class BikeModel<T extends BikeEntity> extends SinglePartEntityModel<T> {
 	}
 	@Override
 	public void setAngles(BikeEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+		this.getPart().traverse().forEach(ModelPart::resetTransform);
+		this.setHeadAngles(netHeadYaw, headPitch);
+
+		this.animateMovement(ModAnimations.BIKE_MOVING, limbSwing, limbSwingAmount,2f,2.5f);
 	}
+
+	private void setHeadAngles(float headYaw, float headPitch) {
+		headYaw = MathHelper.clamp(headYaw, -30f,30f);
+		headPitch = MathHelper.clamp(headPitch, -25f,45f);
+
+		this.head.yaw = headYaw * 0.17453292f;
+		this.head.pitch = headPitch * 17453292f;
+	}
+
 	@Override
 	public void render(MatrixStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
 		Bike.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
