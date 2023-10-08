@@ -11,8 +11,11 @@ import net.redtiger.lots_of_bikes_mod.entity.custom.BikeEntity;
 // Paste this class into your mod and generate all required imports
 public class BikeModel<T extends BikeEntity> extends SinglePartEntityModel<T> {
 	private final ModelPart Bike;
+	private final ModelPart head;
 	public BikeModel(ModelPart root) {
+
 		this.Bike = root.getChild("Bike");
+		this.head = root.getChild("Bike").getChild("Steering");
 	}
 	public static TexturedModelData getTexturedModelData() {
 		ModelData modelData = new ModelData();
