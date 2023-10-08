@@ -4,8 +4,6 @@ import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.util.math.MathHelper;
-import net.redtiger.lots_of_bikes_mod.entity.animation.ModAnimations;
 import net.redtiger.lots_of_bikes_mod.entity.custom.BikeEntity;
 
 // Made with Blockbench 4.8.3
@@ -15,20 +13,19 @@ public class BikeModel<T extends BikeEntity> extends SinglePartEntityModel<T> {
 	private final ModelPart Bike;
 	private final ModelPart head;
 	public BikeModel(ModelPart root) {
-
 		this.Bike = root.getChild("Bike");
 		this.head = root.getChild("Bike").getChild("Steering");
 	}
 	public static TexturedModelData getTexturedModelData() {
 		ModelData modelData = new ModelData();
 		ModelPartData modelPartData = modelData.getRoot();
-		ModelPartData Bike = modelPartData.addChild("Bike", ModelPartBuilder.create(), ModelTransform.pivot(7.4216F, 16.7123F, 5.625F));
+		ModelPartData Bike = modelPartData.addChild("Bike", ModelPartBuilder.create(), ModelTransform.of(0.0F, 0.0F, 0.0F, 0.0F, 1.5708F, 0.0F));
 
 		ModelPartData Frame = Bike.addChild("Frame", ModelPartBuilder.create().uv(0, 4).cuboid(-7.25F, -9.0F, -1.0F, 12.5F, 2.0F, 2.0F, new Dilation(0.0F))
 		.uv(19, 25).cuboid(13.5F, -8.0F, -1.5F, 1.0F, 9.75F, 1.0F, new Dilation(0.0F))
 		.uv(0, 12).cuboid(-2.0F, 0.0F, -2.0F, 5.0F, 2.0F, 4.0F, new Dilation(0.0F))
 		.uv(15, 25).cuboid(13.5F, -8.0F, 0.5F, 1.0F, 9.75F, 1.0F, new Dilation(0.0F))
-		.uv(29, 2).cuboid(13.5F, -8.0F, -1.25F, 1.0F, 0.75F, 2.5F, new Dilation(0.0F)), ModelTransform.pivot(-12.1716F, -5.7123F, -5.625F));
+		.uv(29, 2).cuboid(13.5F, -8.0F, -1.25F, 1.0F, 0.75F, 2.5F, new Dilation(0.0F)), ModelTransform.pivot(-4.75F, 11.0F, 0.0F));
 
 		ModelPartData cube_r1 = Frame.addChild("cube_r1", ModelPartBuilder.create().uv(24, 8).cuboid(-1.0F, -1.25F, -1.25F, 2.5F, 2.5F, 2.5F, new Dilation(0.0F)), ModelTransform.of(13.75F, 1.0F, 0.0F, 0.0F, 0.0F, -0.7854F));
 
@@ -36,7 +33,7 @@ public class BikeModel<T extends BikeEntity> extends SinglePartEntityModel<T> {
 
 		ModelPartData cube_r3 = Frame.addChild("cube_r3", ModelPartBuilder.create().uv(0, 8).cuboid(-4.625F, -1.393F, -1.0F, 10.0F, 2.0F, 2.0F, new Dilation(0.0F)), ModelTransform.of(1.5F, -4.25F, 0.0F, 0.0F, 0.0F, -1.9635F));
 
-		ModelPartData Steering = Bike.addChild("Steering", ModelPartBuilder.create(), ModelTransform.pivot(-0.4167F, -0.75F, -5.625F));
+		ModelPartData Steering = Bike.addChild("Steering", ModelPartBuilder.create(), ModelTransform.pivot(7.0049F, 15.9623F, 0.0F));
 
 		ModelPartData cube_r4 = Steering.addChild("cube_r4", ModelPartBuilder.create().uv(13, 12).cuboid(-0.625F, 2.625F, -0.625F, 0.75F, 0.25F, 0.75F, new Dilation(0.0F)), ModelTransform.of(0.4167F, 0.75F, 5.625F, 1.5708F, 0.0F, 0.0F));
 
@@ -50,7 +47,7 @@ public class BikeModel<T extends BikeEntity> extends SinglePartEntityModel<T> {
 
 		ModelPartData cube_r9 = Steering.addChild("cube_r9", ModelPartBuilder.create().uv(8, 31).cuboid(-0.375F, -1.625F, -0.375F, 0.75F, 3.25F, 0.75F, new Dilation(0.0F)), ModelTransform.of(0.1667F, -1.0F, 1.125F, -0.7854F, 0.0F, 0.0F));
 
-		ModelPartData Pedals = Bike.addChild("Pedals", ModelPartBuilder.create().uv(18, 12).cuboid(-0.5F, -0.5F, -2.0F, 1.0F, 1.0F, 4.0F, new Dilation(0.0F)), ModelTransform.pivot(-9.1716F, -13.7123F, -5.625F));
+		ModelPartData Pedals = Bike.addChild("Pedals", ModelPartBuilder.create().uv(18, 12).cuboid(-0.5F, -0.5F, -2.0F, 1.0F, 1.0F, 4.0F, new Dilation(0.0F)), ModelTransform.pivot(-1.75F, 3.0F, 0.0F));
 
 		ModelPartData cube_r10 = Pedals.addChild("cube_r10", ModelPartBuilder.create().uv(0, 26).cuboid(-1.0F, -0.5F, -0.5F, 2.0F, 1.0F, 2.5F, new Dilation(0.0F)), ModelTransform.of(-3.0F, 0.0F, 2.5F, 0.0F, -1.5708F, 0.0F));
 
@@ -60,31 +57,19 @@ public class BikeModel<T extends BikeEntity> extends SinglePartEntityModel<T> {
 
 		ModelPartData cube_r13 = Pedals.addChild("cube_r13", ModelPartBuilder.create().uv(27, 25).cuboid(-1.0F, -0.5F, -0.5F, 2.0F, 1.0F, 2.5F, new Dilation(0.0F)), ModelTransform.of(4.5F, 0.0F, -2.5F, 0.0F, -1.5708F, 0.0F));
 
-		ModelPartData WheelBack = Bike.addChild("WheelBack", ModelPartBuilder.create().uv(0, 18).cuboid(-3.5F, -3.5F, -0.25F, 7.25F, 7.25F, 0.5F, new Dilation(0.0F)), ModelTransform.pivot(-18.4216F, -13.7123F, -5.625F));
+		ModelPartData WheelBack = Bike.addChild("WheelBack", ModelPartBuilder.create().uv(0, 18).cuboid(-3.5F, -3.5F, -0.25F, 7.25F, 7.25F, 0.5F, new Dilation(0.0F)), ModelTransform.pivot(-11.0F, 3.0F, 0.0F));
 
-		ModelPartData WheelFront = Bike.addChild("WheelFront", ModelPartBuilder.create().uv(17, 17).cuboid(-3.5F, -3.75F, -0.25F, 7.25F, 7.25F, 0.5F, new Dilation(0.0F)), ModelTransform.pivot(1.5784F, -13.7123F, -5.625F));
+		ModelPartData WheelFront = Bike.addChild("WheelFront", ModelPartBuilder.create().uv(17, 17).cuboid(-3.5F, -3.75F, -0.25F, 7.25F, 7.25F, 0.5F, new Dilation(0.0F)), ModelTransform.pivot(9.0F, 3.0F, 0.0F));
 
-		ModelPartData BottomSteering = Bike.addChild("BottomSteering", ModelPartBuilder.create(), ModelTransform.pivot(0.6062F, -3.3865F, -5.625F));
+		ModelPartData BottomSteering = Bike.addChild("BottomSteering", ModelPartBuilder.create(), ModelTransform.pivot(8.0277F, 13.3258F, 0.0F));
 
 		ModelPartData cube_r14 = BottomSteering.addChild("cube_r14", ModelPartBuilder.create().uv(0, 30).cuboid(-0.75F, -1.625F, -0.75F, 1.5F, 3.25F, 1.5F, new Dilation(0.0F)), ModelTransform.of(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, -0.7854F));
 		return TexturedModelData.of(modelData, 64, 64);
 	}
 	@Override
 	public void setAngles(BikeEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.getPart().traverse().forEach(ModelPart::resetTransform);
-		this.setHeadAngles(netHeadYaw, headPitch);
 
-		this.animateMovement(ModAnimations.BIKE_MOVING, limbSwing, limbSwingAmount,2f,2.5f);
 	}
-
-	private void setHeadAngles(float headYaw, float headPitch) {
-		headYaw = MathHelper.clamp(headYaw, -30f,30f);
-		headPitch = MathHelper.clamp(headPitch, -25f,45f);
-
-		this.head.yaw = headYaw * 0.17453292f;
-		this.head.pitch = headPitch * 17453292f;
-	}
-
 	@Override
 	public void render(MatrixStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
 		Bike.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
