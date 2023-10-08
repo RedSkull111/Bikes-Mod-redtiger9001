@@ -1,3 +1,5 @@
+package net.redtiger.lots_of_bikes_mod.entity.client;
+
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
