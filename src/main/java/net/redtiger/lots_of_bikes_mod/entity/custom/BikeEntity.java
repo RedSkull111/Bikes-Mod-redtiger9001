@@ -3,14 +3,15 @@ package net.redtiger.lots_of_bikes_mod.entity.custom;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ai.goal.SwimGoal;
-import net.minecraft.entity.ai.goal.WanderAroundGoal;
+import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Items;
+import net.minecraft.recipe.Ingredient;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -48,6 +49,15 @@ public class BikeEntity extends AnimalEntity {
     @Override
     protected void initGoals() {
         this.goalSelector.add(0, new SwimGoal(this));
+
+        this.goalSelector.add(1, new AnimalMateGoal(this, 1.15D));
+        this.goalSelector.add(2, new TemptGoal(this, 0.1D, Ingredient.ofItems(Items.IRON_INGOT), false));
+
+        this.goalSelector.add(3, new FollowParentGoal(this,1.15D));
+
+        this.goalSelector.add(4, new WanderAroundFarGoal(this,0.25D));
+        this.goalSelector.add(5, new LookAtEntityGoal(this, PlayerEntity.class, 4f));
+        this.goalSelector.add(3, new LookAroundGoal(this));
     }
 
     public static DefaultAttributeContainer.Builder createBikeAttributes() {

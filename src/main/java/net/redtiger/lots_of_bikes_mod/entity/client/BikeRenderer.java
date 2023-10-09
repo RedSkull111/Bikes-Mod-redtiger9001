@@ -12,7 +12,7 @@ public class BikeRenderer extends MobEntityRenderer<BikeEntity, BikeModel<BikeEn
     private static final Identifier TEXTURE = new Identifier(Bikes.MOD_ID, "textures/entity/blue_bike.png");
 
     public BikeRenderer(EntityRendererFactory.Context context) {
-        super(context, new BikeModel<>(context.getPart(ModModelLayers.BIKE)), 0.6f);
+        super(context, new BikeModel<>(context.getPart(ModModelLayers.BIKE)), 0f);
     }
 
     @Override
@@ -26,7 +26,8 @@ public class BikeRenderer extends MobEntityRenderer<BikeEntity, BikeModel<BikeEn
         if(mobEntity.isBaby()) {
             matrixStack.scale(0.5f,0.5f,0.5f);
         } else {
-            matrixStack.scale(1f,1f,1f);
+            matrixStack.scale(-1f,-1f,1f);
+            matrixStack.translate(0,-1.6,0);
         }
         super.render(mobEntity, f, g, matrixStack, vertexConsumerProvider, i);
     }
