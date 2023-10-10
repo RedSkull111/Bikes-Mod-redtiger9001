@@ -4,6 +4,7 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.entity.passive.HorseEntity;
 import net.minecraft.util.Identifier;
 import net.redtiger.lots_of_bikes_mod.Bikes;
 import net.redtiger.lots_of_bikes_mod.entity.custom.BikeEntity;

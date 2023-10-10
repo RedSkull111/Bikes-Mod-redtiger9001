@@ -37,11 +37,11 @@ public class BikeModel<T extends BikeEntity> extends SinglePartEntityModel<T> {
 
 		ModelPartData Steering = Bike.addChild("Steering", ModelPartBuilder.create(), ModelTransform.pivot(7.0049F, 15.9623F, 0.0F));
 
-		ModelPartData cube_r4 = Steering.addChild("cube_r4", ModelPartBuilder.create().uv(13, 12).cuboid(-0.625F, 2.625F, -0.625F, 0.75F, 0.25F, 0.75F, new Dilation(0.0F)), ModelTransform.of(0.4167F, 0.75F, 5.625F, 1.5708F, 0.0F, 0.0F));
+		ModelPartData cube_r4 = Steering.addChild("cube_r4", ModelPartBuilder.create().uv(13, 12).cuboid(-0.625F, -3.125F, -0.625F, 0.75F, 0.25F, 0.75F, new Dilation(0.0F)), ModelTransform.of(0.4167F, 0.75F, 5.625F, 1.5708F, 0.0F, 0.0F));
 
-		ModelPartData cube_r5 = Steering.addChild("cube_r5", ModelPartBuilder.create().uv(13, 13).cuboid(-0.625F, 2.625F, -0.125F, 0.75F, 0.25F, 0.75F, new Dilation(0.0F)), ModelTransform.of(0.4167F, 0.75F, -5.625F, -1.5708F, 0.0F, 0.0F));
+		ModelPartData cube_r5 = Steering.addChild("cube_r5", ModelPartBuilder.create().uv(13, 13).cuboid(-0.625F, -2.625F, -0.125F, 0.75F, 0.25F, 0.75F, new Dilation(0.0F)), ModelTransform.of(0.4167F, 0.75F, -5.625F, -1.5708F, 0.0F, 0.0F));
 
-		ModelPartData cube_r6 = Steering.addChild("cube_r6", ModelPartBuilder.create().uv(23, 25).cuboid(-0.575F, -4.375F, -0.075F, 0.65F, 11.0F, 0.65F, new Dilation(0.0F)), ModelTransform.of(0.4167F, 0.75F, -1.125F, -1.5708F, 0.0F, 0.0F));
+		ModelPartData cube_r6 = Steering.addChild("cube_r6", ModelPartBuilder.create().uv(23, 25).cuboid(-0.575F, -6.375F, -0.075F, 0.65F, 11.0F, 0.65F, new Dilation(0.0F)), ModelTransform.of(0.4167F, 0.75F, -1.125F, -1.5708F, 0.0F, 0.0F));
 
 		ModelPartData cube_r7 = Steering.addChild("cube_r7", ModelPartBuilder.create().uv(27, 29).cuboid(-0.875F, -2.625F, -0.375F, 1.25F, 5.5F, 1.25F, new Dilation(0.0F)), ModelTransform.of(0.4167F, 0.75F, -0.125F, -1.5708F, 0.0F, 0.0F));
 

@@ -3,6 +3,7 @@ package net.redtiger.lots_of_bikes_mod.entity.custom;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -15,7 +16,8 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec2f;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.redtiger.lots_of_bikes_mod.entity.ModEntities;
 import org.jetbrains.annotations.Nullable;
@@ -82,17 +84,8 @@ public class BikeEntity extends AnimalEntity {
         return ActionResult.SUCCESS;
     }
 
-    protected void clampPassengerYaw(Entity passenger) {
-        passenger.setBodyYaw(this.getYaw());
-        float f = MathHelper.wrapDegrees(passenger.getYaw() - this.getYaw());
-        float g = MathHelper.clamp(f, -105.0f, 105.0f);
-        passenger.prevYaw += g - f;
-        passenger.setYaw(passenger.getYaw() + g - f);
-        passenger.setHeadYaw(passenger.getYaw());
-    }
-
     @Override
     public void onPassengerLookAround(Entity passenger) {
-        this.clampPassengerYaw(passenger);
+        passenger.setPos(this.getX(),this.getY()+0.25,this.getZ());
     }
 }
